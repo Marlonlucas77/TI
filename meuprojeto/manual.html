@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melhorias no Cabeçalho e Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+    
+ <title>Buscar Arquivos</title>
+    <style>
+      /* Estilo da página */
+      body {
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+       
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #d82323;
+        color: #fff;
+      }
+  
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #00d1ff;
+        text-shadow: 0 0 10px #00d1ff, 0 0 20px #00d1ff;
+      }
+  
+      /* Container da barra de pesquisa */
+      .search-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+  
+      /* Wrapper da barra */
+      .search-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+      }
+  
+      /* Barra de pesquisa */
+      .search-bar {
+        flex: 1;
+        padding: 15px 20px;
+        border: 2px solid #00d1ff;
+        background: transparent;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 50px;
+        outline: none;
+        box-shadow: 0 0 15px #00d1ff;
+        transition: box-shadow 0.4s ease, border-color 0.4s ease;
+      }
+  
+      .search-bar::placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+  
+      .search-bar:focus {
+        box-shadow: 0 0 30px #00d1ff, 0 0 60px #00d1ff;
+        border-color: #0ff;
+      }
+  
+      /* Ícone de pesquisa */
+      .search-icon {
+        position: absolute;
+        right: 10px;
+        font-size: 20px;
+        color: #00d1ff;
+        pointer-events: none;
+      }
+  
+      /* Resultados da busca */
+      .file-result {
+        margin: 20px auto;
+        max-width: 500px;
+        background: #1e1e1e;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+  
+      .file-list {
+        list-style: none;
+        padding: 0;
+      }
+  
+      .file-list li {
+        margin: 10px 0;
+      }
+  
+      .file-list li a {
+        text-decoration: none;
+        color: #00d1ff;
+        font-weight: bold;
+        transition: color 0.3s ease, text-shadow 0.3s ease;
+      }
+  
+      .file-list li a:hover {
+        color: #0ff;
+        text-shadow: 0 0 10px #00d1ff, 0 0 20px #0ff;
+      }
+  
+      #result-message {
+        text-align: center;
+        color: #888;
+      }
+    </style>
+
+
+
+
+<style>
+  body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f2027;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+  }
+
+ /* Cabeçalho */
+header {
+    background: linear-gradient(90deg, #1c2833, #34495e);
+    padding: 20px 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%; /* Garante que ocupe toda a largura */
+    margin: 0; /* Remove possíveis margens padrão */
+    left: 0; /* Garante que o cabeçalho comece no início da tela */
+}
+
+
+/* Título do Cabeçalho */
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: #e6eff1;
+    margin: 0;
+    text-shadow: none; /* Remove sombras para simplicidade */
+}
+
+/* Navegação */
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin: 0 15px;
+    padding: 5px 8px;
+    border-radius: 3px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a:active {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+/* Ajuste do Container Principal */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Títulos Secundários */
+h2 {
+    color: #3498db;
+    margin: 20px 0;
+    font-size: 1.8rem;
+}
+
+/* Rodapé */
+footer {
+    background-color: #1c2833;
+    padding: 10px;
+    text-align: center;
+    color: #bbb;
+    margin-top: 50px;
+}
+</style>
+
+
+
+<title>Lista Suspensa Personalizada</title>
+<style>
+    /* Centralizar o container principal */
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Altura da tela */
+        margin: 0; /* Remove margem padrão */
+    }
+
+    .dropdown-content a {
+    display: flex; /* Define um container flexível */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    text-decoration: none;
+    font-size: 16px;
+    color: #ddd;
+    padding: 12px;
+    transition: background-color 0.3s, padding-left 0.3s;
+    font-family: Arial, sans-serif;
+    white-space: nowrap; /* Impede a quebra de linha */
+}
+
+    /* Estilo do container da lista suspensa */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        width: 400px;
+        text-align: center;
+    }
+
+    /* Botão do dropdown com design tecnológico */
+    .dropdown button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #0f2027, #203a43, #2c5364); /* Gradiente tecnológico */
+        color: white;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+        transition: transform 0.3s, box-shadow 0.3s; /* Suavidade ao passar o mouse */
+    }
+
+    /* Efeito hover no botão */
+    .dropdown button:hover {
+        transform: scale(1.05); /* Aumenta ligeiramente ao passar o mouse */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+    }
+
+    /* Conteúdo da lista suspensa */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background: #1a1a1a; /* Fundo escuro para visual moderno */
+        color: white;
+        width: 100%;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    /* Itens da lista suspensa */
+    .dropdown-content a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 16px;
+        color: #ddd;
+        padding: 12px;
+        transition: background-color 0.3s, padding-left 0.3s;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Efeito hover nos itens */
+    .dropdown-content a:hover {
+        background-color: #333;
+        padding-left: 20px; /* Animação para a esquerda */
+    }
+
+    /* Ícones na lista */
+    .dropdown-content img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px; /* Espaço entre o ícone e o texto */
+    }
+
+    /* Exibe a lista suspensa ao passar o mouse */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+
+    
+</head>
+<body>
+
+    <header>
+        <h1>Bem-vindo ao TI</h1>
+        <nav>
+            <a href="file:///C:/Users/usuario/Desktop/Estudo/Estudo.html#sobre">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="https://santacasachavantes.org/contatos-chavantes/">Contato</a>
+        </nav>
+        
+    </header>
+
+    <main>
+        <h2>Esta com alguma dúvida?</h2>
+        <div class="dropdown">
+            <button>Escolha um manual</button>
+            <div class="dropdown-content">
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EVrI0QXTjCNCiOH5rGv2MEoBD1GDxHBZCPN_UlmBZ2MLQw?e=MLZ2xq"><img src="imagens/manual.png" alt="Ícone 1">Como fazer assinatura do Outlook via App</a>
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EVmQbGEnGNBKgz-DJ0snj8IBQVzf-E_MKx-K9c95_rincw?e=olZpZd"><img src="imagens/manual.png" alt="Ícone 2">Como fazer assinatura do Outlook via WEB</a>
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EY7iWO5Ec75BgdxggfzcU6MBdo-1fOqJsc1tDGIzWZmiKA?e=SQAODM"><img src="imagens/manual.png" alt="Ícone 3">Como criar um projeto</a>
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EaNVcmk2FlhGj6cBqXxbLx0B6mHtt5RgissXieepSx8CbQ?e=PFlio1"><img src="imagens/manual.png" alt="Ícone 4">Como inserir documentos jurídicos no site</a>
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EejI7__-sQRCjwlND816jqIB4SHUIBqQnrNtkd3iXinuTw?e=XSc1us"><img src="imagens/manual.png" alt="Ícone 5">Como inserir RA no site</a>
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EZgg3JDG8QBHuTQFM1Q3DicBBNT1QuVQvCNI809jK2G-fA?e=gJyXTo"><img src="imagens/manual.png" alt="Ícone 6">Como criar Folha de Pagamento</a>
+                <a href="https://santacasachavantes.sharepoint.com/:b:/s/sede.suporte/EdXu3HnC83VGtzQQYFsWbcsBfQR7SQLwf6XxeUBdTrnHyQ?e=NKD9YV"><img src="imagens/manual.png" alt="Ícone 7">Como fazer importação de Fornecedores e Funcionários</a>
+                
+
+
+
+            </div>
+        </div>
+        
+    </main>
+    
+
+    <title>Buscar Arquivos</title>
+
+    <div class="search-container">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="search-bar"
+          class="search-bar"
+          placeholder="Digite para buscar manuais..."
+          oninput="searchFiles()"
+        />
+      </div>
+    </div>
+  
+    <!-- Resultados da Busca -->
+    <div id="file-result" class="file-result" style="display: none;">
+      <ul id="file-list" class="file-list"></ul>
+      <p id="result-message"></p>
+    </div>
+  
+    <script>
+      // Lista de arquivos armazenada como objeto no JavaScript
+      const files = [
+        { name: "Santa Casa – Chavantes/SP – Mantenedora", path: "https://forms.office.com/r/TNyDx8MFMH" },
+        { name: "Vilhena/RO – UPA, HRV e IRV", path: "https://forms.office.com/r/QPzGg8TwT6" },
+        { name: "UPA Sta. Helena 24h – Taubaté/SP", path: "https://forms.office.com/r/cfcbbaWsUT" },
+        { name: "Piauí/PA – HRCM", path: "https://forms.office.com/r/5GC5SBVzym" },
+        { name: "Sede Administrativa – São Paulo", path: "https://forms.office.com/r/DQFbgRZzFV" },
+        { name: "UPA San. Marino 24h – Taubaté/SP", path: "https://forms.office.com/r/fNP2T6v0AS" },
+      ];
+      
+      // Função de busca
+      function searchFiles() {
+        const query = document.getElementById("search-bar").value.toLowerCase();
+        const resultContainer = document.getElementById("file-result");
+        const fileList = document.getElementById("file-list");
+        const resultMessage = document.getElementById("result-message");
+  
+        fileList.innerHTML = "";
+        resultMessage.textContent = "";
+  
+        if (query.trim() === "") {
+          resultContainer.style.display = "none";
+          return;
+        }
+  
+        const filteredFiles = files.filter(file => file.name.toLowerCase().includes(query));
+  
+        if (filteredFiles.length > 0) {
+          filteredFiles.forEach(file => {
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = file.path;
+            link.target = "_blank";
+            link.textContent = file.name;
+            listItem.appendChild(link);
+            fileList.appendChild(listItem);
+          });
+          resultContainer.style.display = "block";
+        } else {
+          resultMessage.textContent = "Nenhum arquivo encontrado.";
+          resultContainer.style.display = "block";
+        }
+      }
+    </script>
+
+
+
+    <footer>
+        <p>Suporte chamados, envie-nos uma mensagem: <a href="https://wa.me/5511973710254?text=Olá%20SCMC" style="color: #00d1ff;">Clique aqui</a></p>
+    </footer>
+
+</body>
+</html>
